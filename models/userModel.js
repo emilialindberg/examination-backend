@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import db from './db.js'; 
+import { dbUser } from './db.js'; 
 
 // JWT generates tokens if login suceeds.
 
@@ -9,12 +9,12 @@ export const createUser = (user, callback) => {
         if (err) return callback(err);
 
         const newUser = { username: user.username, password: hashedPassword };
-        db.insert(newUser, callback);
+        dbUser.insert(newUser, callback);
     });
 };
 
 export const authenticateUser = (username, password, callback) => {
-    db.findOne({ username }, (err, user) => {
+    dbUser.findOne({ username }, (err, user) => {
         if (err || !user) return callback(null, false);
 
         bcrypt.compare(password, user.password, (err, isMatch) => {

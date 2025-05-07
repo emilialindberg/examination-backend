@@ -1,4 +1,4 @@
-import db from './db.js';
+import { db } from './db.js';
 
 //CRUD-functions to create, read, update, delete. Every function calls same method in NeDB to execute.
 
