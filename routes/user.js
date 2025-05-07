@@ -4,10 +4,6 @@ import { createUser, authenticateUser } from '../models/userModel.js';
 
 const router = express.Router();
 
-// Dummy endpoints. Swagger: State that this endpoint is used to create a new user account.
-// Document request body structure for username and password.
-// Specificy different possible responses and their importance.
-
 /**
  * @swagger
  * /api/user/signup:
@@ -30,10 +26,11 @@ const router = express.Router();
  *       201:
  *         description: User account created
  *       400:
- *         description: False request (ex: username or password is missing)
+ *         description: Invalid request. username or password missing
  *       500:
  *         description: Server error
  */
+
 router.post('/signup', (req, res) => {
     const { username, password } = req.body;
 
@@ -49,10 +46,6 @@ router.post('/signup', (req, res) => {
         res.status(201).json({ message: 'User created'});
     });
 });
-
-// Swagger: State that this endpoint is used to login a user. 
-// Document request body structure fo username and password.  
-// Specify the response for succesfull login (includes a JWT-token) and inaccurate login.
 
 /**
  * @swagger
