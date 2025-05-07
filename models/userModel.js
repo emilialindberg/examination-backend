@@ -2,6 +2,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import db from './db.js'; 
 
+// JWT generates tokens if login suceeds.
+
 export const createUser = (user, callback) => {
     bcrypt.hash(user.password, 10, (err, hashedPassword) => {
         if (err) return callback(err);

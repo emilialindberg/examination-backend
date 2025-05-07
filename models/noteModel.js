@@ -1,5 +1,7 @@
 import db from './db.js';
 
+//CRUD-functions to create, read, update, delete. Every function calls same method in NeDB to execute.
+
 function createNote(note, callback) {
   db.insert(note, callback);
 }
